@@ -1,0 +1,139 @@
+fragment AssetFields on Asset {
+  title
+  url
+  width
+  height
+}
+
+fragment SkillsFields on Skills {
+  sys {
+    id
+  }
+  skill
+  skillLogo {
+    ...AssetFields
+  }
+}
+
+query getSkillsList(
+  $limit: Int = 20
+  $skip: Int = 0
+  $order: [SkillsOrder] = sys_publishedAt_DESC
+  $locale: String
+) {
+  skillsCollection(limit: $limit, skip: $skip, order: $order, locale: $locale) {
+    items {
+      ...SkillsFields
+    }
+  }
+}
+
+fragment ExperienceFields on Experience {
+  sys {
+    id
+  }
+  dateRange
+  description
+  enterprise
+  enterpriseLogo {
+    ...AssetFields
+  }
+  occupation
+  subDescription
+}
+
+query getExperienceList(
+  $limit: Int = 20
+  $skip: Int = 0
+  $order: [ExperienceOrder] = sys_publishedAt_DESC
+  $locale: String
+) {
+  experienceCollection(
+    limit: $limit
+    skip: $skip
+    order: $order
+    locale: $locale
+  ) {
+    items {
+      ...ExperienceFields
+    }
+  }
+}
+
+fragment WebsiteFields on Websites {
+  sys {
+    id
+  }
+  webName
+  webDescription
+  webLink
+  webPreview {
+    ...AssetFields
+  }
+}
+
+query getWebsiteList(
+  $limit: Int = 20
+  $skip: Int = 0
+  $order: [WebsitesOrder] = sys_publishedAt_DESC
+  $locale: String
+) {
+  websitesCollection(
+    limit: $limit
+    skip: $skip
+    order: $order
+    locale: $locale
+  ) {
+    items {
+      ...WebsiteFields
+    }
+  }
+}
+
+fragment ImageCollectionRequires on Asset {
+  sys {
+    environmentId
+    spaceId
+    id
+  }
+  contentfulMetadata {
+    tags {
+      id
+    }
+  }
+  ...AssetFields
+}
+
+fragment ProjectFields on Projects {
+  sys {
+    id
+  }
+  projectName
+  projectDescription
+  projectPreview {
+    ...AssetFields
+  }
+  projectStackCollection {
+    items {
+      ...ImageCollectionRequires
+    }
+  }
+}
+
+query getProjectList(
+  $limit: Int = 20
+  $skip: Int = 0
+  $order: [ProjectsOrder] = sys_publishedAt_DESC
+  $locale: String
+) {
+  projectsCollection(
+    limit: $limit
+    skip: $skip
+    order: $order
+    locale: $locale
+  ) {
+    items {
+      ...ProjectFields
+    }
+  }
+}
