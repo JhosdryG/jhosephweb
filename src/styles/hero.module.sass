@@ -15,9 +15,12 @@
         justify-content: center
 
         h2 
-            line-height: 60px
-            font-size: 4rem
+            line-height: 40px
+            font-size: 2.5rem
             font-family: "Barlow"
+            @media screen and ( min-width: $phone-m )
+                font-size: 4rem
+                line-height: 60px
             @media screen and ( min-width: $tablet )
                 font-size: 6rem
                 line-height: 90px
@@ -26,12 +29,15 @@
                 font-size: 8rem
 
         h3 
-            text-align: center
             margin-top: 10px
-            padding: 20px 20px
+            padding: 10px
+            text-align: center
             font-family: 'Roboto', sans-serif
             font-weight: 500
-            font-size: .9rem
+            font-size: .7rem
+            @media screen and ( min-width: $phone-m )
+                font-size: .9rem
+                padding: 20px
             @media screen and ( min-width: $tablet )
                 font-size: 1.1rem
             @media screen and ( min-width: $desktop )
@@ -60,9 +66,21 @@
 .quote
     position: absolute
     bottom: 10px
-    right: 10px
+    right: 30px
     text-transform: none
     color: $dark
     font-family: 'Rock Salt', cursive
     letter-spacing: 4px
-    font-size: .75rem
+    font-size: .6rem
+    max-width: 100px
+    @media screen and ( min-width: $phone-m )
+        font-size: .7rem
+        max-width: 150px
+    @media screen and ( min-width: $tablet )
+        font-size: .8rem
+        max-width: 260px
+    @media screen and ( min-width: 700px )
+        font-size: .8rem
+        max-width: 350px
+
+

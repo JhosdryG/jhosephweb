@@ -20,7 +20,8 @@
       "@lib": ["lib/index.ts"],
       "@components/*": ["src/components/*"],
       "@ui/*": ["src/ui/*"],
-      "@styles/*": ["src/styles/*"]
+      "@styles/*": ["src/styles/*"],
+      "@assets/*": ["public/assets/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import Hero from "@components/Hero";
+import Introduction from "@components/Introduction";
 
 const index: NextPage = () => (
   <>
@@ -13,6 +14,7 @@ const index: NextPage = () => (
       />
     </Head>
     <Hero />
+    <Introduction />
   </>
 );
 export default index;
