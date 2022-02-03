@@ -1,9 +1,30 @@
-import { NextPage } from "next";
+import { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import Introduction from "@components/Introduction";
+import { getSkillList } from "@lib";
 import Head from "next/head";
 import Hero from "@components/Hero";
-import Introduction from "@components/Introduction";
+import Skills from "@components/Skills";
 
-const index: NextPage = () => (
+interface Props {
+  skills: Skill[];
+}
+
+export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => {
+  try {
+    const skills = await getSkillList();
+    return {
+      props: {
+        skills,
+      },
+    };
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  }
+};
+
+const Index = ({ skills }: InferGetStaticPropsType<typeof getStaticProps>) => (
   <>
     <Head>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,6 +36,7 @@ const index: NextPage = () => (
     </Head>
     <Hero />
     <Introduction />
+    <Skills skills={skills} />
   </>
 );
-export default index;
+export default Index;
