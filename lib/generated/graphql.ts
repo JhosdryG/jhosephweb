@@ -308,6 +308,7 @@ export enum IEntryOrder {
 /** Jobs experience description [See type definition](https://app.contentful.com/spaces/c2kllrniidut/content_types/experience) */
 export type IExperience = IEntry & {
   __typename?: 'Experience';
+  brandColor?: Maybe<Scalars['String']>;
   contentfulMetadata: IContentfulMetadata;
   dateRange?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
@@ -317,6 +318,12 @@ export type IExperience = IEntry & {
   occupation?: Maybe<Scalars['String']>;
   subDescription?: Maybe<Scalars['String']>;
   sys: ISys;
+};
+
+
+/** Jobs experience description [See type definition](https://app.contentful.com/spaces/c2kllrniidut/content_types/experience) */
+export type IExperienceBrandColorArgs = {
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -373,6 +380,13 @@ export type IExperienceCollection = {
 export type IExperienceFilter = {
   AND?: InputMaybe<Array<InputMaybe<IExperienceFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<IExperienceFilter>>>;
+  brandColor?: InputMaybe<Scalars['String']>;
+  brandColor_contains?: InputMaybe<Scalars['String']>;
+  brandColor_exists?: InputMaybe<Scalars['Boolean']>;
+  brandColor_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  brandColor_not?: InputMaybe<Scalars['String']>;
+  brandColor_not_contains?: InputMaybe<Scalars['String']>;
+  brandColor_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   contentfulMetadata?: InputMaybe<IContentfulMetadataFilter>;
   dateRange?: InputMaybe<Scalars['String']>;
   dateRange_contains?: InputMaybe<Scalars['String']>;
@@ -427,6 +441,8 @@ export type IExperienceLinkingCollectionsEntryCollectionArgs = {
 };
 
 export enum IExperienceOrder {
+  BrandColorAsc = 'brandColor_ASC',
+  BrandColorDesc = 'brandColor_DESC',
   DateRangeAsc = 'dateRange_ASC',
   DateRangeDesc = 'dateRange_DESC',
   EnterpriseAsc = 'enterprise_ASC',
@@ -1000,7 +1016,7 @@ export type IGetSkillsListQueryVariables = Exact<{
 
 export type IGetSkillsListQuery = { __typename?: 'Query', skillsCollection?: { __typename?: 'SkillsCollection', items: Array<{ __typename?: 'Skills', skill?: string | null, sys: { __typename?: 'Sys', id: string }, skillLogo?: { __typename?: 'Asset', title?: string | null, url?: string | null, width?: number | null, height?: number | null } | null } | null> } | null };
 
-export type IExperienceFieldsFragment = { __typename?: 'Experience', dateRange?: string | null, description?: string | null, enterprise?: string | null, occupation?: string | null, subDescription?: string | null, sys: { __typename?: 'Sys', id: string }, enterpriseLogo?: { __typename?: 'Asset', title?: string | null, url?: string | null, width?: number | null, height?: number | null } | null };
+export type IExperienceFieldsFragment = { __typename?: 'Experience', dateRange?: string | null, description?: string | null, enterprise?: string | null, occupation?: string | null, subDescription?: string | null, brandColor?: string | null, sys: { __typename?: 'Sys', id: string }, enterpriseLogo?: { __typename?: 'Asset', title?: string | null, url?: string | null, width?: number | null, height?: number | null } | null };
 
 export type IGetExperienceListQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
@@ -1010,7 +1026,7 @@ export type IGetExperienceListQueryVariables = Exact<{
 }>;
 
 
-export type IGetExperienceListQuery = { __typename?: 'Query', experienceCollection?: { __typename?: 'ExperienceCollection', items: Array<{ __typename?: 'Experience', dateRange?: string | null, description?: string | null, enterprise?: string | null, occupation?: string | null, subDescription?: string | null, sys: { __typename?: 'Sys', id: string }, enterpriseLogo?: { __typename?: 'Asset', title?: string | null, url?: string | null, width?: number | null, height?: number | null } | null } | null> } | null };
+export type IGetExperienceListQuery = { __typename?: 'Query', experienceCollection?: { __typename?: 'ExperienceCollection', items: Array<{ __typename?: 'Experience', dateRange?: string | null, description?: string | null, enterprise?: string | null, occupation?: string | null, subDescription?: string | null, brandColor?: string | null, sys: { __typename?: 'Sys', id: string }, enterpriseLogo?: { __typename?: 'Asset', title?: string | null, url?: string | null, width?: number | null, height?: number | null } | null } | null> } | null };
 
 export type IWebsiteFieldsFragment = { __typename?: 'Websites', webName?: string | null, webDescription?: string | null, webLink?: string | null, sys: { __typename?: 'Sys', id: string }, webPreview?: { __typename?: 'Asset', title?: string | null, url?: string | null, width?: number | null, height?: number | null } | null };
 
@@ -1070,6 +1086,7 @@ export const ExperienceFieldsFragmentDoc = gql`
   }
   occupation
   subDescription
+  brandColor
 }
     ${AssetFieldsFragmentDoc}`;
 export const WebsiteFieldsFragmentDoc = gql`

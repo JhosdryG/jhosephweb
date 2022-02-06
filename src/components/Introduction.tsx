@@ -25,25 +25,21 @@ function Introduction() {
           </div>
         </div>
         <div className={styles.profile_desc}>
-          <p>
-            I'm a professional fullstack web developer who loves what he does,
-            an enthusiast for learning new things and get more experience
-            everyday. I like to cooperate with my team and create a friendly
-            atmosphere and make the working journey feel like something to look
-            forward to.
-          </p>
-          <p>
-            I have experience in the planning, design and development in web,
-            mobile and desktop environments. I have transformed simple and
-            manual processes to IT systems that increase the effectiveness and
-            efficiency of these processes.
-          </p>
-          <p>
-            I'm an entrepreneur, autodidact, fast learner, innovative, creative,
-            open to new ideas, able to work with teams development and under
-            pressure.
-          </p>
-          <p>
+          <div>
+            <p>
+              I'm a professional fullstack web developer who loves what he does,
+              an enthusiast for learning new things and get more experience
+              everyday. I like to cooperate with my team and create a friendly
+              atmosphere and make the working journey feel like something to
+              look forward to.
+            </p>
+            <p>
+              I'm an entrepreneur, autodidact, fast learner, innovative,
+              creative, open to new ideas, able to work with teams development
+              and under pressure.
+            </p>
+          </div>
+          <p className={styles.prhase}>
             I don't only want to write code, i want to create amazing things to
             promote the development of humanity.
           </p>

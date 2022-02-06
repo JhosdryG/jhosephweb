@@ -25,7 +25,7 @@ const Skills = ({ skills }: props) => {
             </div>
           ))}
         </div>
-        <h2 className={styles.continue}>To be contiue...</h2>
+        <h2 className={styles.continue}>To be continue...</h2>
       </div>
     </div>
   );

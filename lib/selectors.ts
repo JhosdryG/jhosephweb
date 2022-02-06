@@ -76,7 +76,12 @@ type PartialExperience = PartialEntityWithId & {
   enterpriseLogo?: Maybe<PartialImageFields>;
 } & Pick<
     IExperience,
-    "dateRange" | "description" | "enterprise" | "occupation" | "subDescription"
+    | "dateRange"
+    | "description"
+    | "enterprise"
+    | "occupation"
+    | "subDescription"
+    | "brandColor"
   >;
 
 export const selectExperience = nonEmpty<PartialExperience, Experience>(
@@ -88,6 +93,7 @@ export const selectExperience = nonEmpty<PartialExperience, Experience>(
     enterprise: partialExperience.enterprise!,
     occupation: partialExperience.occupation!,
     subDescription: partialExperience.subDescription!,
+    brandColor: partialExperience.brandColor!,
   })
 );
 

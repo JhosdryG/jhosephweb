@@ -19,6 +19,7 @@ type Experience = {
   enterpriseLogo: Image;
   occupation: string;
   subDescription: string;
+  brandColor: string;
 };
 
 type Website = {

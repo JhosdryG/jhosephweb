@@ -1,0 +1,86 @@
+@import ./_variables
+
+.container
+    display: flex
+    flex-direction: column
+    @media screen and ( min-width: $tablet )
+        min-height: 95vh
+        flex-direction: row
+
+    & > div
+        padding: 40px 20px
+        width: 100%
+        @media screen and ( min-width: $tablet )
+            width: 50%
+
+.panel_left
+    text-transform: uppercase
+    color: #fff
+    background: $dark-radial-bg
+
+    h2 
+        font-size: 2rem
+        text-align: center
+        font-family: "Barlow"
+        margin-bottom: 40px
+
+.left_content
+    height: 90%
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+
+p.bot_text
+    margin-bottom: 0
+    font-size: .8rem
+    letter-spacing: 3px
+    text-align: center
+    font-family: 'Rock Salt', cursive
+    transform: rotate(-3deg)
+    @media screen and ( min-width: 500px )
+        font-size: 0.9rem
+    @media screen and ( min-width: 800px )
+        font-size: 1rem
+
+.panel_right
+    display: flex
+    flex-direction: column
+    color: $dark
+    background: #fff
+
+    h2 
+        text-transform: uppercase
+        font-size: 2rem
+        text-align: center
+        font-family: "Barlow"
+        margin-bottom: 40px
+
+.right_content
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    flex-grow: 1
+
+.externals
+    text-align: center
+    font-family: 'Rock Salt', cursive
+    letter-spacing: 4px
+    font-size: 0.7rem
+    font-weight: bold
+
+.externals_box
+    display: flex
+    justify-content: center
+    align-items: flex-end
+    margin-top: 10px
+
+
+    div
+        margin: 0 10px
+        transition: all .3s ease-out
+
+        &:hover
+            transform: scale(1.1)
+
+
+

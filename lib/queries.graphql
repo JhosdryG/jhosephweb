@@ -40,6 +40,7 @@ fragment ExperienceFields on Experience {
   }
   occupation
   subDescription
+  brandColor
 }
 
 query getExperienceList(
