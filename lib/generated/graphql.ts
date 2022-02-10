@@ -900,6 +900,7 @@ export type IWebsites = IEntry & {
   contentfulMetadata: IContentfulMetadata;
   linkedFrom?: Maybe<IWebsitesLinkingCollections>;
   sys: ISys;
+  webColor?: Maybe<Scalars['String']>;
   webDescription?: Maybe<Scalars['String']>;
   webLink?: Maybe<Scalars['String']>;
   webName?: Maybe<Scalars['String']>;
@@ -910,6 +911,12 @@ export type IWebsites = IEntry & {
 /** websites i have made [See type definition](https://app.contentful.com/spaces/c2kllrniidut/content_types/websites) */
 export type IWebsitesLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** websites i have made [See type definition](https://app.contentful.com/spaces/c2kllrniidut/content_types/websites) */
+export type IWebsitesWebColorArgs = {
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -950,6 +957,13 @@ export type IWebsitesFilter = {
   OR?: InputMaybe<Array<InputMaybe<IWebsitesFilter>>>;
   contentfulMetadata?: InputMaybe<IContentfulMetadataFilter>;
   sys?: InputMaybe<ISysFilter>;
+  webColor?: InputMaybe<Scalars['String']>;
+  webColor_contains?: InputMaybe<Scalars['String']>;
+  webColor_exists?: InputMaybe<Scalars['Boolean']>;
+  webColor_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  webColor_not?: InputMaybe<Scalars['String']>;
+  webColor_not_contains?: InputMaybe<Scalars['String']>;
+  webColor_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   webDescription?: InputMaybe<Scalars['String']>;
   webDescription_contains?: InputMaybe<Scalars['String']>;
   webDescription_exists?: InputMaybe<Scalars['Boolean']>;
@@ -996,6 +1010,8 @@ export enum IWebsitesOrder {
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  WebColorAsc = 'webColor_ASC',
+  WebColorDesc = 'webColor_DESC',
   WebLinkAsc = 'webLink_ASC',
   WebLinkDesc = 'webLink_DESC',
   WebNameAsc = 'webName_ASC',
@@ -1028,7 +1044,7 @@ export type IGetExperienceListQueryVariables = Exact<{
 
 export type IGetExperienceListQuery = { __typename?: 'Query', experienceCollection?: { __typename?: 'ExperienceCollection', items: Array<{ __typename?: 'Experience', dateRange?: string | null, description?: string | null, enterprise?: string | null, occupation?: string | null, subDescription?: string | null, brandColor?: string | null, sys: { __typename?: 'Sys', id: string }, enterpriseLogo?: { __typename?: 'Asset', title?: string | null, url?: string | null, width?: number | null, height?: number | null } | null } | null> } | null };
 
-export type IWebsiteFieldsFragment = { __typename?: 'Websites', webName?: string | null, webDescription?: string | null, webLink?: string | null, sys: { __typename?: 'Sys', id: string }, webPreview?: { __typename?: 'Asset', title?: string | null, url?: string | null, width?: number | null, height?: number | null } | null };
+export type IWebsiteFieldsFragment = { __typename?: 'Websites', webName?: string | null, webDescription?: string | null, webLink?: string | null, webColor?: string | null, sys: { __typename?: 'Sys', id: string }, webPreview?: { __typename?: 'Asset', title?: string | null, url?: string | null, width?: number | null, height?: number | null } | null };
 
 export type IGetWebsiteListQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
@@ -1038,7 +1054,7 @@ export type IGetWebsiteListQueryVariables = Exact<{
 }>;
 
 
-export type IGetWebsiteListQuery = { __typename?: 'Query', websitesCollection?: { __typename?: 'WebsitesCollection', items: Array<{ __typename?: 'Websites', webName?: string | null, webDescription?: string | null, webLink?: string | null, sys: { __typename?: 'Sys', id: string }, webPreview?: { __typename?: 'Asset', title?: string | null, url?: string | null, width?: number | null, height?: number | null } | null } | null> } | null };
+export type IGetWebsiteListQuery = { __typename?: 'Query', websitesCollection?: { __typename?: 'WebsitesCollection', items: Array<{ __typename?: 'Websites', webName?: string | null, webDescription?: string | null, webLink?: string | null, webColor?: string | null, sys: { __typename?: 'Sys', id: string }, webPreview?: { __typename?: 'Asset', title?: string | null, url?: string | null, width?: number | null, height?: number | null } | null } | null> } | null };
 
 export type IImageCollectionRequiresFragment = { __typename?: 'Asset', title?: string | null, url?: string | null, width?: number | null, height?: number | null, sys: { __typename?: 'Sys', environmentId: string, spaceId: string, id: string }, contentfulMetadata: { __typename?: 'ContentfulMetadata', tags: Array<{ __typename?: 'ContentfulTag', id?: string | null } | null> } };
 
@@ -1100,6 +1116,7 @@ export const WebsiteFieldsFragmentDoc = gql`
   webPreview {
     ...AssetFields
   }
+  webColor
 }
     ${AssetFieldsFragmentDoc}`;
 export const ImageCollectionRequiresFragmentDoc = gql`

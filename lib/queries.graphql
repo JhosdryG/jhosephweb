@@ -71,6 +71,7 @@ fragment WebsiteFields on Websites {
   webPreview {
     ...AssetFields
   }
+  webColor
 }
 
 query getWebsiteList(

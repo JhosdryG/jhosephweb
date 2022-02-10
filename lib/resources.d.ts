@@ -28,6 +28,7 @@ type Website = {
   webDescription: string;
   webLink: string;
   webPreview: Image;
+  webColor: string;
 };
 
 type Project = {

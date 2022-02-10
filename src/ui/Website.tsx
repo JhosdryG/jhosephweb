@@ -8,7 +8,7 @@ interface Props {
 
 function Website({ web }: Props) {
   return (
-    <a className={styles.web} key={web.id}>
+    <a className={styles.web} key={web.id} href={web.webLink} target="_blank">
       <div className={styles.web_img_box}>
         <Image
           src={web.webPreview.url}
@@ -18,7 +18,7 @@ function Website({ web }: Props) {
         />
       </div>
       <div className={styles.web_content}>
-        <h3>{web.webName}</h3>
+        <h3 style={{ color: web.webColor }}>{web.webName}</h3>
         <p>{web.webDescription}</p>
       </div>
     </a>

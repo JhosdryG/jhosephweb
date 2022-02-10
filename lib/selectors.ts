@@ -101,7 +101,7 @@ export const selectExperiences = selectListOf(selectExperience);
 
 type PartialWebsite = PartialEntityWithId & {
   webPreview?: Maybe<PartialImageFields>;
-} & Pick<IWebsites, "webDescription" | "webLink" | "webName">;
+} & Pick<IWebsites, "webDescription" | "webLink" | "webName" | "webColor">;
 
 export const selectWebsite = nonEmpty<PartialWebsite, Website>(
   (partialWebsite) => ({
@@ -110,6 +110,7 @@ export const selectWebsite = nonEmpty<PartialWebsite, Website>(
     webDescription: partialWebsite.webDescription!,
     webLink: partialWebsite.webLink!,
     webPreview: selectImage(partialWebsite.webPreview),
+    webColor: partialWebsite.webColor!,
   })
 );
 
