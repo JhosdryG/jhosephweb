@@ -1,15 +1,17 @@
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import Introduction from "@components/Introduction";
-import { getExperienceList, getSkillList } from "@lib";
+import { getExperienceList, getSkillList, getWebsiteList } from "@lib";
 import Head from "next/head";
 import Hero from "@components/Hero";
 import Skills from "@components/Skills";
 import Professional from "@components/Professional";
+import Websites from "@components/Websites";
 import { IExperienceOrder } from "@lib/generated/graphql";
 
 interface Props {
   skills: Skill[];
   experiences: Experience[];
+  websites: Website[];
 }
 
 export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => {
@@ -18,10 +20,12 @@ export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => {
     const experiences = await getExperienceList({
       order: IExperienceOrder.SysPublishedVersionDesc,
     });
+    const websites = await getWebsiteList();
     return {
       props: {
         skills,
         experiences,
+        websites,
       },
     };
   } catch (error) {
@@ -34,6 +38,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => {
 const Index = ({
   skills,
   experiences,
+  websites,
 }: InferGetStaticPropsType<typeof getStaticProps>) => (
   <>
     <Head>
@@ -48,6 +53,7 @@ const Index = ({
     <Introduction />
     <Skills skills={skills} />
     <Professional experiences={experiences} />
+    <Websites websites={websites} />
   </>
 );
 export default Index;
