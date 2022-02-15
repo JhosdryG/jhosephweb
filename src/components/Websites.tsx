@@ -7,15 +7,13 @@ interface Props {
 }
 
 function Websites({ websites }: Props) {
-  const onClickWebsite = (id: string): void => {};
-
   return (
     <section className={styles.container}>
       <h2>Let me show you my work</h2>
       <h3>Web sites</h3>
       <div className={styles.websites}>
         {websites.map((web) => (
-          <Website web={web} />
+          <Website web={web} key={web.id} />
         ))}
       </div>
     </section>
