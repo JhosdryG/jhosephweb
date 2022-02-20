@@ -48,6 +48,7 @@ function ExperienceModal({ experience, isOpen, setIsOpen }: Props) {
           <div className={styles.modal_image_box}>
             <Image
               src={experience.enterpriseLogo.url}
+              alt={`${experience.enterprise} Logo`}
               width={experience.enterpriseLogo.width}
               height={experience.enterpriseLogo.height}
             />

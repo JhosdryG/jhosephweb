@@ -27,10 +27,20 @@ function Professional({ experiences }: Props) {
             <p>Oh i also have some experience working with:</p>
             <div className={styles.externals_box}>
               <div>
-                <Image src={pslogo} width={45} height={35} />
+                <Image
+                  src={pslogo}
+                  alt="PlayStation Logo"
+                  width={45}
+                  height={35}
+                />
               </div>
               <div>
-                <Image src={applelogo} width={35} height={40} />
+                <Image
+                  src={applelogo}
+                  alt="Apple logo"
+                  width={35}
+                  height={40}
+                />
               </div>
             </div>
           </div>

@@ -17,6 +17,7 @@ function Experience({ exp, onClickExperience }: Props) {
       <div className={styles.exp_image_box}>
         <Image
           src={exp.enterpriseLogo.url}
+          alt={`${exp.enterprise} Logo`}
           width={exp.enterpriseLogo.width}
           height={exp.enterpriseLogo.height}
         />

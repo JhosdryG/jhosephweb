@@ -59,6 +59,11 @@ const Index = ({
         href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&family=Roboto:wght@400;500;700&family=Rock+Salt&display=swap"
         rel="stylesheet"
       />
+      <title>Jhoseph FullStack Developer</title>
+      <meta
+        name="description"
+        content="I'm Jhoseph Guerrero, a professional fullstack wep developer and software engineer specialized in solving problems through code."
+      />
     </Head>
     <Hero />
     <Introduction />

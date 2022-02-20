@@ -16,6 +16,7 @@ const Skills = ({ skills }: props) => {
               <div className={styles.image_box}>
                 <Image
                   src={skill.skillLogo.url}
+                  alt={`${skill.skill} logo`}
                   width={skill.skillLogo.width}
                   height={skill.skillLogo.height}
                   layout="responsive"

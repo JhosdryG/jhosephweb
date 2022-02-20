@@ -20,7 +20,12 @@ function Introduction() {
       <div className={styles.panel_right}>
         <div className={styles.image_container}>
           <div className={styles.image_box}>
-            <Image src={profilePhoto} width={300} height={300} />
+            <Image
+              src={profilePhoto}
+              alt="Jhoseph Guerrero Profile photo"
+              width={300}
+              height={300}
+            />
             <span className={styles.look}>Look, it's me!</span>
           </div>
         </div>

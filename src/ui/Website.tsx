@@ -12,6 +12,7 @@ function Website({ web }: Props) {
       <div className={styles.web_img_box}>
         <Image
           src={web.webPreview.url}
+          alt={`${web.webName} preview`}
           layout="fill"
           objectFit="cover"
           quality={100}
