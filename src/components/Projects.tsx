@@ -13,7 +13,7 @@ function Projects({ projects }: Props) {
         <h3>Software && Apps</h3>
         <div className={styles.projects}>
           {projects.map((project) => (
-            <Project project={project} />
+            <Project project={project} key={project.id} />
           ))}
         </div>
       </div>

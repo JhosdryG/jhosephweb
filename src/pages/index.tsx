@@ -11,8 +11,9 @@ import Hero from "@components/Hero";
 import Skills from "@components/Skills";
 import Professional from "@components/Professional";
 import Websites from "@components/Websites";
-import { IExperienceOrder } from "@lib/generated/graphql";
 import Projects from "@components/Projects";
+import Contact from "@components/Contact";
+import { IExperienceOrder } from "@lib/generated/graphql";
 
 interface Props {
   skills: Skill[];
@@ -65,6 +66,7 @@ const Index = ({
     <Professional experiences={experiences} />
     <Websites websites={websites} />
     <Projects projects={projects} />
+    <Contact />
   </>
 );
 export default Index;
