@@ -79,7 +79,7 @@ function Contact() {
         opacity: 0,
         stagger: 0.4,
       });
-  });
+  }, []);
 
   const [status, setStatus] = useState<Status>("");
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
