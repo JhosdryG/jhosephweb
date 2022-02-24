@@ -8,8 +8,8 @@ interface Props {
 
 function Project({ project }: Props) {
   return (
-    <div className={styles.project}>
-      <div className={styles.project_img}>
+    <div className={[styles.project, "project"].join(" ")}>
+      <div className={[styles.project_img, "project_img"].join(" ")}>
         <Image
           src={project.projectPreview.url}
           alt={`${project.projectName} preview`}
@@ -24,7 +24,10 @@ function Project({ project }: Props) {
         </div>
         <div className={styles.stacks}>
           {project.projectStackCollection.map((stack, i) => (
-            <div className={styles.stack_img_box} key={i}>
+            <div
+              className={[styles.stack_img_box, "stack_img"].join(" ")}
+              key={i}
+            >
               <Image
                 src={stack.url}
                 alt={`${stack.title} logo`}

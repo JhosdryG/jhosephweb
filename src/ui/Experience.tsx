@@ -10,11 +10,11 @@ interface Props {
 function Experience({ exp, onClickExperience }: Props) {
   return (
     <div
-      className={styles.experience}
+      className={[styles.experience, "experience"].join(" ")}
       key={exp.id}
       onClick={() => onClickExperience(exp.id)}
     >
-      <div className={styles.exp_image_box}>
+      <div className={[styles.exp_image_box, "image_box"].join(" ")}>
         <Image
           src={exp.enterpriseLogo.url}
           alt={`${exp.enterprise} Logo`}

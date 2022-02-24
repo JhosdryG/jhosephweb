@@ -1,5 +1,6 @@
-import { FormEvent, useState } from "react";
-import styles from "@styles/contact.module.sass";
+import { useState, useEffect, useRef, FormEvent } from "react";
+import { gsap } from "gsap/dist/gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import {
   faGithub,
   faLinkedin,
@@ -10,6 +11,7 @@ import { faFilePdf } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Loader from "@ui/Loader";
 import ContactModal from "@ui/ContactModal";
+import styles from "@styles/contact.module.sass";
 
 type Status = "loading" | "success" | "error" | "";
 
@@ -26,6 +28,59 @@ type formTarget = EventTarget & {
 };
 
 function Contact() {
+  const gsapRef = useRef(null);
+  gsap.registerPlugin(ScrollTrigger);
+  const qs = gsap.utils.selector(gsapRef);
+
+  useEffect(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: gsapRef.current,
+        start: "top center-=150px",
+      },
+    });
+    tl.from(qs(".findme"), {
+      y: 50,
+      opacity: 0,
+      duration: 0.6,
+    })
+      .from(qs(".icon_box a"), {
+        y: 30,
+        opacity: 0,
+        stagger: 0.2,
+      })
+      .from(qs(".cv"), {
+        y: 30,
+        opacity: 0,
+        duration: 0.6,
+      })
+      .from(qs(".cv_icon"), {
+        y: 30,
+        opacity: 0,
+        duration: 0.6,
+      })
+      .from(qs(".rights"), {
+        y: 30,
+        opacity: 0,
+        duration: 0.6,
+      })
+      .from(qs(".title_box h3"), {
+        y: 30,
+        opacity: 0,
+        stagger: 0.4,
+      })
+      .from(qs(".form > div"), {
+        y: 30,
+        opacity: 0,
+        stagger: 0.4,
+      })
+      .from(qs(".right_bottom_text"), {
+        y: 30,
+        opacity: 0,
+        stagger: 0.4,
+      });
+  });
+
   const [status, setStatus] = useState<Status>("");
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -64,13 +119,13 @@ function Contact() {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={gsapRef}>
       <div className={styles.panel_left}>
         <div className={styles.left_container}>
           <div className={styles.mula}></div>
           <div className={styles.findme_box}>
-            <p>You can find me in:</p>
-            <div className={styles.icon_box}>
+            <p className="findme">You can find me in:</p>
+            <div className={[styles.icon_box, "icon_box"].join(" ")}>
               <a target="_blank" href="https://github.com/JhosdryG">
                 <FontAwesomeIcon icon={faGithub} />
               </a>
@@ -88,26 +143,32 @@ function Contact() {
               </a>
             </div>
             <div className={styles.cv}>
-              <p>You can download my cv here:</p>
+              <p className="cv">You can download my cv here:</p>
               <a
                 href="assets/curriculum.pdf"
                 target="_blank"
                 download="jhoseph_curriculum.pdf"
+                className="cv_icon"
               >
                 <FontAwesomeIcon icon={faFilePdf} />
               </a>
             </div>
           </div>
-          <p className={styles.rights}>Jhoseph Guerrero all rights reserved</p>
+          <p className={[styles.rights, "rights"].join(" ")}>
+            Jhoseph Guerrero all rights reserved
+          </p>
         </div>
       </div>
 
       <div className={styles.panel_right}>
-        <div className={styles.title_box}>
+        <div className={[styles.title_box, "title_box"].join(" ")}>
           <h3>Would you like to work with me?</h3>
           <h3>Contact me</h3>
         </div>
-        <form onSubmit={handleSubmit} className={styles.form}>
+        <form
+          onSubmit={handleSubmit}
+          className={[styles.form, "form"].join(" ")}
+        >
           <div className={styles.form_box}>
             <label htmlFor="name">Name</label>
             <input
@@ -144,7 +205,9 @@ function Contact() {
             <button type="submit">Send message</button>
           </div>
         </form>
-        <p className={styles.right_bottom_text}>
+        <p
+          className={[styles.right_bottom_text, "right_bottom_text"].join(" ")}
+        >
           I'll be excited to work with you
         </p>
       </div>

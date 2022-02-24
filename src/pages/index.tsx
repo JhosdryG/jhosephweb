@@ -1,3 +1,6 @@
+import React, { useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import Introduction from "@components/Introduction";
 import {
@@ -50,28 +53,38 @@ const Index = ({
   experiences,
   websites,
   projects,
-}: InferGetStaticPropsType<typeof getStaticProps>) => (
-  <>
-    <Head>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&family=Roboto:wght@400;500;700&family=Rock+Salt&display=swap"
-        rel="stylesheet"
-      />
-      <title>Jhoseph FullStack Developer</title>
-      <meta
-        name="description"
-        content="I'm Jhoseph Guerrero, a professional fullstack wep developer and software engineer specialized in solving problems through code."
-      />
-    </Head>
-    <Hero />
-    <Introduction />
-    <Skills skills={skills} />
-    <Professional experiences={experiences} />
-    <Websites websites={websites} />
-    <Projects projects={projects} />
-    <Contact />
-  </>
-);
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      gsap.registerPlugin(ScrollTrigger);
+      // @ts-ignore
+      gsap.core.globals("ScrollTrigger", ScrollTrigger);
+    }
+  });
+
+  return (
+    <>
+      <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&family=Roboto:wght@400;500;700&family=Rock+Salt&display=swap"
+          rel="stylesheet"
+        />
+        <title>Jhoseph FullStack Developer</title>
+        <meta
+          name="description"
+          content="I'm Jhoseph Guerrero, a professional fullstack wep developer and software engineer specialized in solving problems through code."
+        />
+      </Head>
+      <Hero />
+      <Introduction />
+      <Skills skills={skills} />
+      <Professional experiences={experiences} />
+      <Websites websites={websites} />
+      <Projects projects={projects} />
+      <Contact />
+    </>
+  );
+};
 export default Index;

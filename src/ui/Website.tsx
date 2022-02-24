@@ -8,8 +8,12 @@ interface Props {
 
 function Website({ web }: Props) {
   return (
-    <a className={styles.web} href={web.webLink} target="_blank">
-      <div className={styles.web_img_box}>
+    <a
+      className={[styles.web, "web"].join(" ")}
+      href={web.webLink}
+      target="_blank"
+    >
+      <div className={[styles.web_img_box, "img_box"].join(" ")}>
         <Image
           src={web.webPreview.url}
           alt={`${web.webName} preview`}
