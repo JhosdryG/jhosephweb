@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap/dist/gsap";
 import Image from "next/image";
 import Modal from "react-modal";
 
@@ -33,17 +34,38 @@ interface Props {
 }
 
 function ExperienceModal({ experience, isOpen, setIsOpen }: Props) {
+  const [isRendered, setIsRendered] = useState(false);
+
+  useEffect(() => {
+    if (isOpen && isRendered) {
+      gsap.from(".ReactModal__Content", {
+        y: 50,
+        opacity: 0,
+        duration: 0.5,
+      });
+    } else if (isOpen) {
+      setIsRendered(true);
+    } else if (!isOpen) {
+      setIsRendered(false);
+    }
+  }, [isOpen, isRendered]);
+
+  const handleClose = () => {
+    gsap.to(".ReactModal__Content", {
+      y: 50,
+      opacity: 0,
+      duration: 0.5,
+      onComplete: () => setIsOpen(false),
+    });
+  };
+
   if (!experience) return null;
   return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={() => setIsOpen(false)}
-      style={modalStyle}
-    >
-      <div className={styles.modal_closer} onClick={() => setIsOpen(false)}>
+    <Modal isOpen={isOpen} onRequestClose={handleClose} style={modalStyle}>
+      <div className={styles.modal_closer} onClick={handleClose}>
         X
       </div>
-      <div className={styles.modal_content}>
+      <div className={[styles.modal_content, "content"].join(" ")}>
         <div className={styles.modal_header}>
           <div className={styles.modal_image_box}>
             <Image
