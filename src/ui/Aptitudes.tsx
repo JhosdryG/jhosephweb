@@ -5,7 +5,7 @@ function Aptitudes() {
   return (
     <div className={styles.aptitudes}>
       <p className={styles.aptitude}>Curiosity</p>
-      <p className={styles.aptitude}>Fast leraning</p>
+      <p className={styles.aptitude}>Fast learning</p>
       <p className={styles.aptitude}>Team Worker</p>
       <p className={styles.aptitude}>Responsability</p>
       <p className={styles.aptitude}>Problem Solver</p>

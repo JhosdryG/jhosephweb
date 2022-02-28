@@ -111,7 +111,7 @@ function Professional({ experiences }: Props) {
         <div className={[styles.left_content, "left_container"].join(" ")}>
           <Aptitudes />
           <p className={[styles.bot_text, "bot_text"].join(" ")}>
-            Due, i just love what i do
+            Dude, i just love what i do
           </p>
         </div>
       </div>
